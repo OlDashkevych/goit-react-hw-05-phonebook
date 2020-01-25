@@ -11,12 +11,7 @@ import Logo from '../Logo/Logo';
 
 class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459125156' },
-      { id: 'id-2', name: 'Hermione Kline', number: '445118912' },
-      { id: 'id-3', name: 'Eden Clements', number: '645115579' },
-      { id: 'id-4', name: 'Annie Copeland', number: '222275126' },
-    ],
+    contacts: [],
     filter: '',
     contactAlreadyExist: false,
   };
