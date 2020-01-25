@@ -13,7 +13,7 @@ class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    contactAlreadyExist: false,
+    isVisible: false,
   };
 
   filterContacts = (contacts, filter) => {
@@ -40,7 +40,7 @@ class App extends Component {
         contacts: [...state.contacts, itemToAdd],
       }));
     } else {
-      this.setState({ contactAlreadyExist: true });
+      this.setState({ isVisible: true });
     }
   };
 
@@ -51,19 +51,18 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, filter, contactAlreadyExist } = this.state;
+    const { contacts, filter, isVisible } = this.state;
     const filtratedContacts = this.filterContacts(contacts, filter);
-    setTimeout(() => {
-      this.setState({ contactAlreadyExist: false });
-    }, 7000);
+
     return (
       <div className={styles.container}>
         <Logo />
         <CSSTransition
-          in={contactAlreadyExist}
-          timeout={250}
+          in={isVisible}
+          timeout={1000}
           classNames={slideTransition}
           unmountOnExit
+          onEntered={() => this.setState({ isVisible: false })}
         >
           <Notification />
         </CSSTransition>

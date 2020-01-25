@@ -41,10 +41,16 @@ input {
   box-sizing: border-box;
   border-radius: 5px;
   outline: none;
+  appearance: none;
 }
 input:invalid {
   border: 1px solid #466dd8;
 }
 input:valid {
   border: 1px solid #1c920d;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

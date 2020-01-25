@@ -49,6 +49,7 @@ class ContactForm extends Component {
         <input
           maxLength="10"
           name="number"
+          type="number"
           placeholder="Enter your number..."
           onChange={this.handleChange}
           value={number}
