@@ -1,28 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AsYouType } from 'libphonenumber-js';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styles from './ContactList.module.css';
+import popTransition from './transitions/pop.module.css';
 
 const ContactList = ({ items, onDelete }) => {
   return items.length ? (
-    <ul className={styles.list}>
+    <TransitionGroup component="ul" className={styles.list}>
       {items.map(({ name, id, number }) => {
         return (
-          <li key={id} className={styles.item}>
-            <span>
-              {name} {new AsYouType('US').input(number)}
-            </span>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={() => onDelete(id)}
-            >
-              &#10006;
-            </button>
-          </li>
+          <CSSTransition key={id} timeout={250} classNames={popTransition}>
+            <li className={styles.item}>
+              <span>
+                {name} {new AsYouType('US').input(number)}
+              </span>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={() => onDelete(id)}
+              >
+                &#10006;
+              </button>
+            </li>
+          </CSSTransition>
         );
       })}
-    </ul>
+    </TransitionGroup>
   ) : null;
 };
 ContactList.propTypes = {

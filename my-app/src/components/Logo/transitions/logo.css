@@ -1,0 +1,8 @@
+.Logo-appear {
+  transform: scale(0);
+}
+
+.Logo-appear-active {
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+}
